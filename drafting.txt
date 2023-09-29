@@ -1,0 +1,50 @@
+
+Drafting
+
+To do list
+
+	Assets:
+	- Head (multiple?)
+	- Objects (10)
+	- Background Videos (5)
+	- Randomly generated words
+	- Email notification
+	- Entity (3)
+
+
+Questions:
+	
+1) Consider the following situation: You are in a room with no other people; however, a spider resides in the corner. Do you consider yourself to be alone or not alone?
+
+	A) Alone
+	B) Not alone
+
+2) There's a security camera in the corner of a room you reside in. A red light indicates someone is currently watching you on cctv. You see the red light. Are you alone or not alone?
+
+	A) Alone
+	B) Not alone
+
+3) Reconsider the situation from Question #2. However, the security camera no longer has a red light; thus, you do not know if or if not someone is currently watching the cctv. Do you consider yourself to be alone, or not alone?
+
+	A) Alone
+	B) Not alone
+
+4) A cell in your body exists, living and dying in your presence, within your body. Do you consider the cell to be alone, or not alone?
+
+	A) Alone
+	B) Not alone
+
+5) Consider your answer to Question #4. Why do you consider the cell to be alone/not alone?
+
+	A) (Alone) Because the cell is with other cells
+	B) (Alone) Because the cell is with me
+	C) (Not alone) Because the cell has no conscious
+	D) Both A and B
+
+6) You are the only person in an empty room. Considering the cell within your body regarded in Question #4 and #5, are you alone or not alone?
+
+	A) Alone
+	B) Not alone
+
+7) 
+
