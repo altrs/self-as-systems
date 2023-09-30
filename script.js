@@ -1,3 +1,8 @@
+//ref:
+//https://www.w3schools.com/howto/howto_js_draggable.asp
+
+let isDragging = false;
+
 dragElement(document.getElementById("movable"));
 
   function dragElement(elmnt) {
@@ -11,6 +16,11 @@ dragElement(document.getElementById("movable"));
       pos3 = e.clientX;
       pos4 = e.clientY;
       document.onmouseup = closeDragElement;
+      isDragging = true;
+
+      // Start the interval only when dragging starts
+      if (isDragging) {setInterval(displayRandomImage, 2000);}
+
       document.onmousemove = elementDrag;
     }
 
@@ -22,6 +32,9 @@ dragElement(document.getElementById("movable"));
       pos2 = pos4 - e.clientY;
       pos3 = e.clientX;
       pos4 = e.clientY;
+
+      //populate environment
+      console.log("dragging");
       
       // calculate the boundaries of the parent element
       var parent = document.getElementById("head-space");
@@ -45,5 +58,32 @@ dragElement(document.getElementById("movable"));
     function closeDragElement() { //no drag
       document.onmouseup = null;
       document.onmousemove = null;
+      isDragging = false;
     }
   }
+
+  const imageUrls = [
+    'assets/1.png',
+    'assets/2.png',
+    'assets/3.png',
+  ];
+
+  function displayRandomImage() {
+    if (isDragging) {
+      const imgContainer = document.getElementById('img-container');
+      const randomIndex = Math.floor(Math.random() * imageUrls.length);
+      const randomImageUrl = imageUrls[randomIndex];
+      console.log("display random image: " + randomImageUrl);
+      
+      const img = document.createElement('img');
+      img.src = randomImageUrl;
+      
+      // Set random position within the container
+      img.style.left = Math.floor(Math.random() * (imgContainer.offsetWidth - 50)) + 'px';
+      img.style.top = Math.floor(Math.random() * (imgContainer.offsetHeight - 50)) + 'px';
+
+      imgContainer.appendChild(img);
+    }
+  }
+
+
