@@ -19,32 +19,86 @@ Questions:
 	A) Alone
 	B) Not alone
 
-2) There's a security camera in the corner of a room you reside in. A red light indicates someone is currently watching you on cctv. You see the red light. Are you alone or not alone?
+2) There's a security camera in the corner of a room you reside in. A red light indicates someone is currently watching you on cctv. You see the red light turned on. Are you alone or not alone?
 
 	A) Alone
 	B) Not alone
 
-3) Reconsider the situation from Question #2. However, the security camera no longer has a red light; thus, you do not know if or if not someone is currently watching the cctv. Do you consider yourself to be alone, or not alone?
+3) Reconsider the situation from Question #2. However, the security camera no longer has a red light. Therefore: you do not know if, or if not, someone is currently watching you through the cctv. How do you act within this room?
+
+	A) I act as if someone else is in the room with me
+	B) I act as if I am alone within the room
+
+4) Based on your answer to Question #3, do you consider yourself to be alone, or not alone in the room when the security camera has no red light indicator?
 
 	A) Alone
 	B) Not alone
 
-4) A cell in your body exists, living and dying in your presence, within your body. Do you consider the cell to be alone, or not alone?
-
+5) Thousands of Demodex mites live on your body at any time. Do you consider these mites to be alone or not alone?
+	
 	A) Alone
 	B) Not alone
 
-5) Consider your answer to Question #4. Why do you consider the cell to be alone/not alone?
+6) Consider your answer to Question #4. Why do you consider the mites to be alone/not alone?
 
-	A) (Alone) Because the cell is with other cells
-	B) (Alone) Because the cell is with me
-	C) (Not alone) Because the cell has no conscious
+	A) (Not alone) Because the mites are with other mites
+	B) (Not alone) Because the mites are with me
+	C) (Alone) Because we do not know if the mites are sentient
 	D) Both A and B
 
-6) You are the only person in an empty room. Considering the cell within your body regarded in Question #4 and #5, are you alone or not alone?
+7) You are the only person in an empty room. Considering the mites on your body regarded in Question #4 and #5, are you alone or not alone?
 
 	A) Alone
 	B) Not alone
 
-7) 
+8) A cell in your body exists, living and dying in your presence, within your body. Do you consider the cell to be alone, or not alone?
+
+	A) Alone
+	B) Not alone
+
+9) Consider your answer to Question #4. Why do you consider the cell to be alone/not alone?
+
+	A) (Not alone) Because the cell is with other cells
+	B) (Not alone) Because the cell is with me
+	C) (Alone) Because the cell has no conscious
+	D) Both A and B
+
+10) You are the only person in an empty room. Considering the cell within your body regarded in Question #8 and #9, are you alone or not alone?
+
+	A) Alone
+	B) Not alone
+
+11) You breathe in and out, the air moves around you because of your breath. No other people are around you to confirm. Did this happen?
+
+	A) It happened
+	B) It did not happen
+
+12) Based on your answer to Question #11, why do you believe it happened / did not happen? Choose the most relevant answer.
+
+	A) It happened because I was my own witness
+	C) It happened because the air was a witness
+	B) It happened because my action impacted the external environment
+	D) It didn't happen because it was a minuscule event / had an insignificant effect
+	E) It didn't happen because I don't count as a witness
+	F) It didn't happen because the air doesn't count as a witness
+
+13) True or false: You can be alone in public spaces.
+
+	A) True
+	B) False
+
+14) True or false: Just because no one is around you, that doesn't automatically mean you are alone.
+
+	A) True
+	B) False
+
+15) True or false: Your actions impact others, regardless of if others are around you or not when you do those actions.
+
+	A) True
+	B) False
+
+16) Is it more relevant to perceive if you are alone or not, or is it more relevant to perceive your/someone/something's impacts on your external environment?
+
+	A) Alone
+	B) Impact
 

@@ -1,5 +1,7 @@
 //ref:
 //https://www.w3schools.com/howto/howto_js_draggable.asp
+//https://jsfiddle.net/4e3TY/
+//https://stackoverflow.com/questions/5419459/how-to-allow-only-one-radio-button-to-be-checked
 
 let isDragging = false;
 
@@ -144,14 +146,20 @@ dragElement(document.getElementById("movable"));
 
   //RANDOM TEXT
   function getRandomIndices(max, count) {
-      const indices = [];
-      while (indices.length < count) {
-        const randomIndex = Math.floor(Math.random() * max);
-        if (!indices.includes(randomIndex)) {
-          indices.push(randomIndex);
-        }
+    const indices = [];
+    while (indices.length < count) {
+      const randomIndex = Math.floor(Math.random() * max);
+      if (!indices.includes(randomIndex)) {
+        indices.push(randomIndex);
       }
-      return indices;
     }
+    return indices;
+  }
+
+  //QUESTION TAB
+  const questionDiv = document.getElementsByClassName("question-container");
+  const hand = document.getElementById("q-tab");
+
+
 
 
