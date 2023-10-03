@@ -13,18 +13,19 @@ To do list
 
 
 	Functions remaining (10/1):
-	-calculate ratio-based questionnaire score for user
+	X-calculate ratio-based questionnaire score for user
 	-use score to dictate how many objects on screen will have heads
 	-if score is high, have objects send messages
 	-if score is 100%, change all object images to the user's head
 	-add background image function
 	-add sound effects
 	-create and upload assets
+	-add personal data interaction and then a "actually though, what is this?"
 
 
 Scoring system: Of the currently answered questions, the percentage of 'not-alone'-leaning answers will dictate the ratio of objects with heads. Score of 0-15 (one point for each question)
 
-If there's a score of 0 the user is 'not-alone'-leaning
+The higher the nonbinary score, the more heads there will be
 
 Ex. There are 17 heads: 
 if(score = 0){100% objects have heads}

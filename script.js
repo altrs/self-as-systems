@@ -1,14 +1,15 @@
-//ref:
 //https://www.w3schools.com/howto/howto_js_draggable.asp
 //https://jsfiddle.net/4e3TY/
 //https://stackoverflow.com/questions/5419459/how-to-allow-only-one-radio-button-to-be-checked
 //https://www.infoworld.com/article/2077176/using-javascript-and-forms.html
 //https://www.w3schools.com/jsref/prop_radio_checked.asp
 
+
+// DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET
+// DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET
 let isDragging = false;
 
 dragElement(document.getElementById("movable"));
-
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   elmnt.onmousedown = dragMouseDown;
@@ -16,34 +17,31 @@ function dragElement(elmnt) {
   function dragMouseDown(e) {
     e = e || window.event;
     e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
+    pos3 = e.clientX; // get the mouse cursor position at startup:
     pos4 = e.clientY;
     document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
     isDragging = true;
 
-    // Start the interval only when dragging starts
     if (isDragging) {
       // const randomInterval = Math.floor(Math.random() * (4000 - 2000 + 1)) + 2000;
       // setInterval(displayRandomImage, randomInterval);
       setInterval(displayRandomImage, 500);
     }
 
-    document.onmousemove = elementDrag;
   }
 
   function elementDrag(e) {
     e = e || window.event;
     e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
+    pos1 = pos3 - e.clientX; // calc new cursor position:
     pos2 = pos4 - e.clientY;
     pos3 = e.clientX;
     pos4 = e.clientY;
 
     console.log("dragging");
     
-    // calculate the boundaries of the parent element
+    // boundaries of headspace
     var parent = document.getElementById("head-space");
     var parentRect = parent.getBoundingClientRect();
     var minX = parentRect.left-15;
@@ -51,13 +49,11 @@ function dragElement(elmnt) {
     var minY = parentRect.top-14;
     var maxY = parentRect.bottom - elmnt.offsetHeight;
     
-    // calculate the new position, ensuring it stays within the parent
+    // calc new position inside head-space
     var newX = elmnt.offsetLeft - pos1;
     var newY = elmnt.offsetTop - pos2;
     newX = Math.min(Math.max(newX, minX), maxX);
     newY = Math.min(Math.max(newY, minY), maxY);
-    
-    // set the element's new position:
     elmnt.style.top = newY + "px";
     elmnt.style.left = newX + "px";
   }
@@ -67,21 +63,24 @@ function dragElement(elmnt) {
     document.onmousemove = null;
     isDragging = false;
   }
+
 }
 
+//DISPLAY OBJECTS DISPLAY OBJECTS DISPLAY OBJECTS DISPLAY OBJECTS DISPLAY OBJECTS
+//DISPLAY OBJECTS DISPLAY OBJECTS DISPLAY OBJECTS DISPLAY OBJECTS DISPLAY OBJECTS
+
+const textDocumentURL = 'assets/random-text.txt';
+let messageDisplaying = false;
+var objectsCount = 0;
+var objects = [];
 const imageUrls = [
   'assets/1.png',
   'assets/2.png',
   'assets/3.png',
 ];
 
-var objects = [];
-const textDocumentURL = 'assets/random-text.txt';
-let val = 0;
-let messageDisplaying = false;
-var objectsCount = 0;
-
 function displayRandomImage() {
+  
   if (isDragging) {
     const imgContainer = document.getElementById('img-container');
     const randomIndex = Math.floor(Math.random() * imageUrls.length);
@@ -93,7 +92,7 @@ function displayRandomImage() {
     console.log("OBJECT COUNT " + objectsCount);
     img.src = randomImageUrl;
     
-    // Set random position within container
+    // set random position within container
     var imgx = Math.floor(Math.random() * (imgContainer.offsetWidth - 50)) + 'px';
     var imgy = Math.floor(Math.random() * (imgContainer.offsetHeight - 50)) + 'px';
     img.style.left = imgx;
@@ -101,67 +100,64 @@ function displayRandomImage() {
 
     const objectIndex = objects.length;
     objects.push(img);
-
     console.log("array: " + objects.length);
 
+    // message popup on object click
     img.addEventListener('click', async function(event) {
       console.log("Image clicked! : " + objectIndex);
 
       if(messageDisplaying == false){
-        var messageDiv = document.createElement('div');
-        messageDiv.style.position = 'absolute';
-        messageDiv.style.width = '150px';
-        messageDiv.style.height = 'auto';
-        messageDiv.style.border = '1px solid';
-        messageDiv.style.backgroundColor = "white";
-        var message = document.createElement('p');
-        const response = await fetch(textDocumentURL);
-        const text = await response.text();
-        const lines = text.split('\n');
-        const randomIndices = getRandomIndices(lines.length, 3);
-        console.log("LINE: " + lines[randomIndices[0]]);
-        val = Math.floor(Math.random() * 5) + 1;
-        message.textContent = lines[randomIndices[0]];
-        message.style.fontStyle = "italic";
 
-        messageDiv.appendChild(message);
-        this.parentElement.appendChild(messageDiv);
-        messageDisplaying = true;
+          // create message div
+          var messageDiv = document.createElement('div');
+          const imgRect = this.getBoundingClientRect(); // position of the clicked image
+          messageDiv.style.top =  imgRect.top + 'px';
+          messageDiv.style.left = imgRect.left + 60 + 'px';
+          messageDiv.style.zIndex = "5";
+          messageDiv.style.position = 'absolute';
+          messageDiv.style.width = '150px';
+          messageDiv.style.height = 'auto';
+          messageDiv.style.border = '1px solid';
+          messageDiv.style.backgroundColor = "white";
+          
+          // fetch random line for message
+          var message = document.createElement('p');
+          const response = await fetch(textDocumentURL);
+          const text = await response.text();
+          const lines = text.split('\n');
+          const randomIndices = getRandomIndices(lines.length, 3);
+          console.log("LINE: " + lines[randomIndices[0]]);
+          message.textContent = lines[randomIndices[0]];
+          message.style.fontStyle = "italic";
 
-        // Get the position of the clicked image
-        const imgRect = this.getBoundingClientRect();
-
-        // Set the top and left positions for the messageDiv
-        messageDiv.style.top =  imgRect.top + 'px';
-        messageDiv.style.left = imgRect.left + 60 + 'px';
-        messageDiv.style.zIndex = "5";
-
-        setTimeout(function() {
-          messageDiv.remove();
-          messageDisplaying = false;
-        }, 5000);
-
+          messageDiv.appendChild(message);
+          this.parentElement.appendChild(messageDiv);
+          messageDisplaying = true;
+          setTimeout(function() {messageDiv.remove(); messageDisplaying = false;}, 5000);
       }
 
     });
-
     imgContainer.appendChild(img);
   }
 }
 
-//RANDOM TEXT
+//RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT
+//RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT
 function getRandomIndices(max, count) {
   const indices = [];
   while (indices.length < count) {
     const randomIndex = Math.floor(Math.random() * max);
-    if (!indices.includes(randomIndex)) {
-      indices.push(randomIndex);
-    }
+    if (!indices.includes(randomIndex)) {indices.push(randomIndex);}
   }
   return indices;
 }
 
-//QUESTION TAB
+
+//------------------------------------------------------------------------------------------
+
+
+//QUESTION TAB QUESTION TAB QUESTION TAB QUESTION TAB QUESTION TAB QUESTION TAB QUESTION TAB
+//QUESTION TAB QUESTION TAB QUESTION TAB QUESTION TAB QUESTION TAB QUESTION TAB QUESTION TAB
 const questionDiv = document.getElementsByClassName("question-container")[0];
 const hand = document.getElementById("q-tab");
 var open = false;
@@ -177,87 +173,127 @@ hand.addEventListener('click', async function(event) {
 });
 
 
-//ASSESS QUESTIONAIRE
+//ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS
+//ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS
 
-var questions = ['', '', '', '', '']; //where selections will be stored  
-var q6 = null;
-var questionScore = 0;
+var questions = ['', '', '', '', '', '']; // where selections will be stored  
+var nonbinaryScore = 0; // the higher it is, the  more heads
+var form = document.getElementsByClassName("questions");
 
 questionDiv.addEventListener('click', async function(event) {
-  
-  //questions with only 2 mc answers
-  for (var i = 0; i < questions.length; i++) {
-    const questionName = "q" + (i + 1) + "-input";
-    const radioButton = document.querySelector('input[name="' + questionName + '"]:checked');
-    if (radioButton) {questions[i] = radioButton.value;}
-    else {questions[i] = '';}
-  }
+//form.onchange = function(){
+
+  const radioButtons1 = document.querySelectorAll('input[name="q1-input"]');
+  const radioButtons2 = document.querySelectorAll('input[name="q2-input"]');
+  const radioButtons3 = document.querySelectorAll('input[name="q3-input"]');
+  const radioButtons4 = document.querySelectorAll('input[name="q4-input"]');
+  const radioButtons5 = document.querySelectorAll('input[name="q5-input"]');
+  const radioButtons6 = document.querySelectorAll('input[name="q6-input"]');
+
+    for (const radioButton1 of radioButtons1) {
+        if (radioButton1.checked) {
+          questions[0] = radioButton1.value;
+          break;
+        }
+    }
+    for (const radioButton2 of radioButtons2) {
+        if (radioButton2.checked) {
+          questions[1] = radioButton2.value;
+          break;
+        }
+    }
+    for (const radioButton3 of radioButtons3) {
+        if (radioButton3.checked) {
+          questions[2] = radioButton3.value;
+          break;
+        }
+    }
+    for (const radioButton4 of radioButtons4) {
+        if (radioButton4.checked) {
+          questions[3] = radioButton4.value;
+          break;
+        }
+    }
+    for (const radioButton5 of radioButtons5) {
+        if (radioButton5.checked) {
+          questions[4] = radioButton5.value;
+          break;
+        }
+    }
+    for (const radioButton6 of radioButtons6) {
+        if (radioButton6.checked) {
+          questions[5] = radioButton6.value;
+          break;
+        }
+    }
 
   console.log('Questions:', questions);
-
-  //questions with more than 2 mc answers
-  for (var i = 1; i <= 4; i++) {
-    const radioName = "q6-input-" + i;
-    const radioButton = document.getElementById(radioName);
-
-    if (radioButton && radioButton.checked) {
-      q6 = radioButton; // Assign the checked radio button to q6
-      break; // Exit the loop once a checked radio button is found
-    }
-  }
-
-  if (q6 !== null) {console.log("Selected radio button value: " + q6.value);}
-  else {console.log("No radio button selected for Q6");}
-
   updateQuestionScore();
-
-  // for (var i = 0; i < questions.length; i++) {
-  //   if(questions[i] === 'a'){questionScore++;}
-  //   if(questions[i] === 'b'){questionScore--;}
-  // }
-  // console.log("Score: " + questionScore);
-
 });
+//}
 
 function updateQuestionScore() {
-  questionScore = questions.filter(value => value === 'a').length;
-  console.log("Score: " + questionScore);
+  nonbinaryScore = questions.filter(value => value === 'nonbinary').length;
+  console.log("Score: " + nonbinaryScore);
   updateHeads();
 }
 
+//--------------------------------------------------------------------------------------------
 
-//CREATE HEADS
 
-var headsRatio = 0;
+//CREATE HEADS CREATE HEADS CREATE HEADS CREATE HEADS CREATE HEADS CREATE HEADS CREATE HEADS 
+//CREATE HEADS CREATE HEADS CREATE HEADS CREATE HEADS CREATE HEADS CREATE HEADS CREATE HEADS 
+
+var emails = 0;
 
 function updateHeads() {
-  if (questionScore <= 3) {
-    headsRatio = objects.length; // All objects
-    console.log("All objects");
-  } else if (questionScore > 3) {
-    headsRatio = objects.length - Math.floor(objects.length * 0.8); // 80% OF OBJECTS
-    console.log("80% of objects");
+
+  for (var i = 0; i < objects.length; i++) {
+    removeTalking(objects[i]);
   }
 
-  // Create and position heads for objects based on headsRatio
-  for (var i = 0; i < objects.length; i++) {
-    if (i < headsRatio) {
-      console.log("adding head: " + i);
-      createAndPositionHead(objects[i]);
-    } else {
-      console.log("removing head: " + i);
-      removeHead(objects[i]);
+  // Calculate the number of heads based on nonbinaryScore
+  var numHeads = 0;
+  if (nonbinaryScore >= 6) {
+    numHeads = objects.length;
+    console.log("All objects");
+    for (var i = 0; i < 5; i++) {
+      const randomDelay = (Math.random() * 2000) + 1000; // Random delay between 1 and 3 seconds
+      setTimeout(objectsTalk, randomDelay);
+      emails++;
     }
+  } else if (nonbinaryScore >= 4) {
+    numHeads = Math.floor(objects.length * 0.8);
+    console.log("80% of objects");
+  } else if (nonbinaryScore >= 1) {
+    numHeads = Math.floor(objects.length * 0.6);
+    console.log("60% of objects");
+  } else if (nonbinaryScore === 0) {
+    numHeads = Math.floor(objects.length * 0.4);
+    console.log("40% of objects");
   }
-  console.log("heads ratio: " + headsRatio);
+
+  // Remove all heads from objects
+  for (var i = 0; i < objects.length; i++) {
+    removeHead(objects[i]);
+  }
+
+  // Create and position the calculated number of heads for objects
+  for (var i = 0; i < numHeads; i++) {
+    console.log("adding head: " + i);
+    createAndPositionHead(objects[i]);
+  }
+  console.log("numHeads: " + numHeads);
 }
+
 
 function createAndPositionHead(object) {
   var head = document.createElement("div");
-  head.className = "head"; // Add a class to the head element
+  head.className = "head";
   head.style.backgroundImage = "url(assets/test-imgs/head.png)";
+  head.style.backgroundSize = "contain";
   head.style.position = 'absolute';
-  head.style.width = '150px';
+  head.style.width = '100px';
   head.style.height = '100px';
   head.style.border = '1px solid';
   object.parentElement.appendChild(head);
@@ -269,8 +305,55 @@ function createAndPositionHead(object) {
 
 function removeHead(object) {
   var head = object.parentElement.querySelector('div.head');
-  if (head) {
-    object.parentElement.removeChild(head);
-  }
+  if (head) {object.parentElement.removeChild(head);}
+  console.log(head);
 }
+
+
+//OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS
+//OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS
+
+var randomIndex = 0;
+
+function objectsTalk(){
+  console.log("objects talking");
+
+  randomIndex = Math.floor(Math.random() * objects.length);
+  var email = document.createElement("div");
+  email.className = "email";
+  email.style.backgroundImage = "url(assets/test-imgs/mail.png)";
+  email.style.backgroundSize = "contain";
+  email.style.position = 'absolute';
+  email.style.width = '50px';
+  email.style.height = '50px';
+  email.style.border = '1px solid';
+
+  // Append the email element to the object at the random index
+  const selectedObject = objects[randomIndex];
+  const existingEmail = selectedObject.parentElement.querySelector('.email');
+
+  selectedObject.parentElement.appendChild(email);
+
+  // Position the email element relative to the selected object
+  const imgRect = selectedObject.getBoundingClientRect();
+  email.style.top = imgRect.top + 'px';
+  email.style.left = imgRect.left + 'px';
+  email.style.zIndex = "15";
+
+  email.addEventListener("click", openMail);
+}
+
+function removeTalking(object) {
+  var email = object.parentElement.querySelector('div.email');
+  if (email) {object.parentElement.removeChild(email);}
+  console.log(email);
+}
+
+function openMail(){
+  
+}
+
+
+
+
 

@@ -37,14 +37,15 @@ body {
     max-height: 100%;
 }
 
-/* QUESTIION TAB */
+/* QUESTIION TAB QUESTIION TAB QUESTIION TAB QUESTIION TAB */
+/* QUESTIION TAB QUESTIION TAB QUESTIION TAB QUESTIION TAB */
+/* QUESTIION TAB QUESTIION TAB QUESTIION TAB QUESTIION TAB */
 
 .question-container{
 	position: absolute;
 	display: flex;
 	width: 500px;
 	z-index: 10;
-/*	border: 1px solid red;*/
 	right: -450px;
 }
 
@@ -56,7 +57,7 @@ body {
 .questions{
 	border: 1px solid;
 	padding: 20px;
-	overflow-y: auto; /* Add a vertical scrollbar when content exceeds height */
+	overflow-y: auto;
     max-height: 600px;
 }
 
