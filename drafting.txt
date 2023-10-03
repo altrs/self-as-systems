@@ -14,8 +14,8 @@ To do list
 
 	Functions remaining (10/1):
 	X-calculate ratio-based questionnaire score for user
-	-use score to dictate how many objects on screen will have heads
-	-if score is high, have objects send messages
+	X-use score to dictate how many objects on screen will have heads
+	X-if score is high, have objects send messages
 	-if score is 100%, change all object images to the user's head
 	-add background image function
 	-add sound effects
@@ -96,31 +96,38 @@ Questions:
 	A) It happened *
 	B) It did not happen
 
-12) Based on your answer to Question #11, why do you believe it happened / did not happen? Choose the most relevant answer.
+12) If a tree falls in a forest and no one is around to hear it, does it make a sound? Did it happen?
 
-	A) It happened because I was my own witness *
-	C) It happened because the air was a witness *
-	B) It happened because my action impacted the external environment *
+	A) It happened *
+	B) It didn't happen
+
+13) Based on your answer to Question #11 and #12, are your answers the same or different? Why do you believe it happened / did not happen? Choose the most relevant answer.
+
+	A) It happened because I was my own witness, because the tree was its own witness. *
+	C) It happened because the air was a witness, the grass around the tree was a witness. *
+	B) It happened because our actions impacted the external environment *
 	D) It didn't happen because it was a minuscule event / had an insignificant effect
-	E) It didn't happen because I don't count as a witness
-	F) It didn't happen because the air doesn't count as a witness
+	E) It didn't happen because I/the tree don't count as a witness
+	F) It didn't happen because the air/grass didn't count as a witness
+	G) It happened for me, because I am sentient. But it didn't happen for the tree because it is not sentient
+	H) Neither happened because no one documented it
 
-13) True or false: You can be alone in public spaces.
-
-	A) True *
-	B) False
-
-14) True or false: Just because no one is around you, that doesn't automatically mean you are alone.
+14) True or false: You can be alone in public spaces.
 
 	A) True *
 	B) False
 
-15) True or false: Your actions impact others, regardless of if others are around you or not when you do those actions.
+15) True or false: Just because no one is around you, that doesn't automatically mean you are alone.
 
 	A) True *
 	B) False
 
-16) Is it more relevant to perceive if you are alone or not, or is it more relevant to perceive your/someone/something's impacts on your external environment?
+16) True or false: Your actions impact others, regardless of if others are around you or not when you do those actions.
+
+	A) True *
+	B) False
+
+17) Is it more relevant for you to perceive if you are alone or not, or is it more relevant to perceive your/someone/something's impacts on your/their external environment?
 
 	A) Alone
 	B) Impact *

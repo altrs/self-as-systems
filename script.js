@@ -7,6 +7,7 @@
 
 // DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET
 // DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET
+
 let isDragging = false;
 
 dragElement(document.getElementById("movable"));
@@ -106,7 +107,7 @@ function displayRandomImage() {
     img.addEventListener('click', async function(event) {
       console.log("Image clicked! : " + objectIndex);
 
-      if(messageDisplaying == false){
+      //if(messageDisplaying == false){
 
           // create message div
           var messageDiv = document.createElement('div');
@@ -134,12 +135,13 @@ function displayRandomImage() {
           this.parentElement.appendChild(messageDiv);
           messageDisplaying = true;
           setTimeout(function() {messageDiv.remove(); messageDisplaying = false;}, 5000);
-      }
+      //}
 
     });
     imgContainer.appendChild(img);
   }
 }
+
 
 //RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT
 //RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT
@@ -151,7 +153,6 @@ function getRandomIndices(max, count) {
   }
   return indices;
 }
-
 
 //------------------------------------------------------------------------------------------
 
@@ -176,7 +177,7 @@ hand.addEventListener('click', async function(event) {
 //ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS
 //ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS
 
-var questions = ['', '', '', '', '', '']; // where selections will be stored  
+var questions = ['', '', '', '', '', '', '', '', '','','','','','','','','']; // where selections will be stored  
 var nonbinaryScore = 0; // the higher it is, the  more heads
 var form = document.getElementsByClassName("questions");
 
@@ -189,6 +190,17 @@ questionDiv.addEventListener('click', async function(event) {
   const radioButtons4 = document.querySelectorAll('input[name="q4-input"]');
   const radioButtons5 = document.querySelectorAll('input[name="q5-input"]');
   const radioButtons6 = document.querySelectorAll('input[name="q6-input"]');
+  const radioButtons7 = document.querySelectorAll('input[name="q7-input"]');
+  const radioButtons8 = document.querySelectorAll('input[name="q8-input"]');
+  const radioButtons9 = document.querySelectorAll('input[name="q9-input"]');
+  const radioButtons10 = document.querySelectorAll('input[name="q10-input"]');
+  const radioButtons11 = document.querySelectorAll('input[name="q11-input"]');
+  const radioButtons12 = document.querySelectorAll('input[name="q12-input"]');
+  const radioButtons13 = document.querySelectorAll('input[name="q13-input"]');
+  const radioButtons14 = document.querySelectorAll('input[name="q14-input"]');
+  const radioButtons15 = document.querySelectorAll('input[name="q15-input"]');
+  const radioButtons16 = document.querySelectorAll('input[name="q16-input"]');
+  const radioButtons17 = document.querySelectorAll('input[name="q17-input"]');
 
     for (const radioButton1 of radioButtons1) {
         if (radioButton1.checked) {
@@ -226,6 +238,73 @@ questionDiv.addEventListener('click', async function(event) {
           break;
         }
     }
+    for (const radioButton7 of radioButtons7) {
+        if (radioButton7.checked) {
+          questions[6] = radioButton7.value;
+          break;
+        }
+    }
+    for (const radioButton8 of radioButtons8) {
+        if (radioButton8.checked) {
+          questions[7] = radioButton8.value;
+          break;
+        }
+    }
+    for (const radioButton9 of radioButtons9) {
+        if (radioButton9.checked) {
+          questions[8] = radioButton9.value;
+          break;
+        }
+    }
+    for (const radioButton10 of radioButtons10) {
+        if (radioButton10.checked) {
+          questions[9] = radioButton10.value;
+          break;
+        }
+    }
+    for (const radioButton11 of radioButtons11) {
+        if (radioButton11.checked) {
+          questions[10] = radioButton11.value;
+          break;
+        }
+    }
+    for (const radioButton12 of radioButtons12) {
+        if (radioButton12.checked) {
+          questions[11] = radioButton12.value;
+          break;
+        }
+    }
+    for (const radioButton13 of radioButtons13) {
+        if (radioButton13.checked) {
+          questions[12] = radioButton13.value;
+          break;
+        }
+    }
+    for (const radioButton14 of radioButtons14) {
+        if (radioButton14.checked) {
+          questions[13] = radioButton14.value;
+          break;
+        }
+    }
+    for (const radioButton15 of radioButtons15) {
+        if (radioButton15.checked) {
+          questions[14] = radioButton15.value;
+          break;
+        }
+    }
+    for (const radioButton16 of radioButtons16) {
+        if (radioButton16.checked) {
+          questions[15] = radioButton16.value;
+          break;
+        }
+    }
+    for (const radioButton17 of radioButtons17) {
+        if (radioButton17.checked) {
+          questions[16] = radioButton17.value;
+          break;
+        }
+    }
+
 
   console.log('Questions:', questions);
   updateQuestionScore();
@@ -245,6 +324,7 @@ function updateQuestionScore() {
 //CREATE HEADS CREATE HEADS CREATE HEADS CREATE HEADS CREATE HEADS CREATE HEADS CREATE HEADS 
 
 var emails = 0;
+var objectsAreTalking = false;
 
 function updateHeads() {
 
@@ -254,24 +334,36 @@ function updateHeads() {
 
   // Calculate the number of heads based on nonbinaryScore
   var numHeads = 0;
-  if (nonbinaryScore >= 6) {
+  if (nonbinaryScore >= 15) {
+    if(nonbinaryScore === 17){
+      //change images to be all the same
+    }
     numHeads = objects.length;
     console.log("All objects");
     for (var i = 0; i < 5; i++) {
-      const randomDelay = (Math.random() * 2000) + 1000; // Random delay between 1 and 3 seconds
+      const randomDelay = (Math.random() * 2000) + 1000;
       setTimeout(objectsTalk, randomDelay);
       emails++;
+      objectsAreTalking = true;
     }
-  } else if (nonbinaryScore >= 4) {
+  } else if (nonbinaryScore >= 12) {
     numHeads = Math.floor(objects.length * 0.8);
     console.log("80% of objects");
-  } else if (nonbinaryScore >= 1) {
+    objectsAreTalking = false;
+  } else if (nonbinaryScore >= 9) {
     numHeads = Math.floor(objects.length * 0.6);
     console.log("60% of objects");
-  } else if (nonbinaryScore === 0) {
+  } else if (nonbinaryScore >= 6) {
     numHeads = Math.floor(objects.length * 0.4);
     console.log("40% of objects");
+  } else if (nonbinaryScore >= 3) {
+    numHeads = Math.floor(objects.length * 0.2);
+    console.log("40% of objects");
+  } else if (nonbinaryScore >= 0) {
+    numHeads = 0;
+    console.log("40% of objects");
   }
+
 
   // Remove all heads from objects
   for (var i = 0; i < objects.length; i++) {
@@ -346,12 +438,63 @@ function objectsTalk(){
 function removeTalking(object) {
   var email = object.parentElement.querySelector('div.email');
   if (email) {object.parentElement.removeChild(email);}
+  //updateHeads();
   console.log(email);
 }
 
-function openMail(){
+function openMail() {
+  console.log("OPEN MAIL");
+  removeTalking(this);
+  emails--;
+
+  //popup
+  var email_popup = document.createElement("div");
+  email_popup.className = "email_popup";
+  email_popup.style.width = '300px';
+  email_popup.style.height = '300px';
+  email_popup.style.border = '1px solid';
+  email_popup.style.position = "fixed";
+  email_popup.style.top = "50%";
+  email_popup.style.left = "50%";
+  email_popup.style.transform = "translate(-50%, -50%)";
+  email_popup.style.zIndex = "20";
+  email_popup.style.backgroundColor = "white";
+  document.body.appendChild(email_popup);
+
+  //close
+  var close = document.createElement("div");
+  close.className = "close";
+  close.style.width = '30px';
+  close.style.height = '30px';
+  close.style.border = '1px solid';
+  close.style.position = 'absolute';
+  close.style.top = '10px'; // Adjust this value for the top position
+  close.style.right = '10px'; // Adjust this value for the right position
+  email_popup.appendChild(close);
   
+  close.addEventListener('click', function() {
+    document.body.removeChild(email_popup); // Remove the email popup on click
+  });
 }
+
+function updateEmails(){
+  if(objectsAreTalking){
+    if(emails < 1){
+      var randomNum = (Math.random() * 4);
+      for (var i = 0; i < randomNum; i++) {
+        console.log("generating emails: " + randomNum);
+        const randomDelay = (Math.random() * 2000) + 1000;
+        setTimeout(objectsTalk, randomDelay);
+        emails++;
+      }
+    }
+  }
+  if(emails < (objects.length/2) && objectsAreTalking){
+    setTimeout(objectsTalk, 3000);
+  }
+}
+
+setInterval(updateEmails, 1000);
 
 
 
