@@ -8,6 +8,13 @@
 //SOUND
 const button = document.querySelector("#button");
 const audio = document.querySelector("audio");
+const binAudio = document.getElementById("bin");
+
+const pencilSound = document.getElementById("pencil");
+const generateSound = document.getElementById("comp");
+const beepSound = document.getElementById("beep");
+const mailSound = document.getElementById("mail");
+const robot = document.getElementById("robot");
 
 function openPopup() {
     var popup = document.getElementById("popup");
@@ -23,27 +30,29 @@ button.addEventListener("click", () => {
     audio.volume = 0.2;
     audio.loop = true;
     audio.play();
+    binAudio.play();
 });
 
-function sound(src) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function(){
-        this.sound.play();
-    }
-    this.stop = function(){
-        this.sound.pause();
-    }    
-}
+// function sound(src) {
+//     this.sound = document.createElement("audio");
+//     this.sound.src = src;
+//     this.sound.setAttribute("preload", "auto");
+//     this.sound.setAttribute("controls", "none");
+//     this.sound.style.display = "none";
+//     document.body.appendChild(this.sound);
+//     this.play = function(){
+//         this.sound.play();
+//     }
+//     this.stop = function(){
+//         this.sound.pause();
+//     }    
+// }
 
-var pencilSound = new sound ("assets/sound/pencil.wav");
-var generateSound = new sound ("assets/sound/comp.wav");
-var beepSound = new sound ("assets/sound/beep.wav");
-var mailSound = new sound ("assets/sound/mail.mp3");
+// var pencilSound = new sound ("assets/sound/pencil.wav");
+// var generateSound = new sound ("assets/sound/comp.wav");
+// var beepSound = new sound ("assets/sound/beep.wav");
+// var mailSound = new sound ("assets/sound/mail.mp3");
+// var robot = new sound ("assets/sound/robot.wav");
 
 
 // DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET
@@ -106,7 +115,7 @@ function dragElement(elmnt) {
 
   function closeDragElement() {
     document.body.style.backgroundImage = "url('assets/background_idle.gif')";
-    generateSound.stop();
+    generateSound.pause();
     document.onmouseup = null;
     document.onmousemove = null;
     isDragging = false;
@@ -389,6 +398,7 @@ function updateQuestionScore() {
 
 var emails = 0;
 var objectsAreTalking = false;
+const binary = document.getElementById("binary");
 
 function updateHeads() {
 
@@ -428,9 +438,11 @@ function updateHeads() {
   } else if (nonbinaryScore >= 6) {
     numHeads = Math.floor(objects.length * 0.4);
     objectsTalk();
+    binary.style.display = 'none';
     console.log("40% of objects");
   } else if (nonbinaryScore >= 3) {
     numHeads = Math.floor(objects.length * 0.2);
+    binary.style.display = 'block';
     console.log("40% of objects");
   } else if (nonbinaryScore >= 0) {
     numHeads = 0;
@@ -519,6 +531,8 @@ async function openMail() {
   removeTalking(this);
   emails--;
 
+  robot.play();
+
   //popup
   var email_popup = document.createElement("div");
   email_popup.className = "email_popup";
@@ -563,6 +577,7 @@ async function openMail() {
   email_popup.appendChild(close);
   
   close.addEventListener('click', function() {
+    robot.pause();
     document.body.removeChild(email_popup);
   });
 }
