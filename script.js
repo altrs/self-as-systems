@@ -3,6 +3,47 @@
 //https://stackoverflow.com/questions/5419459/how-to-allow-only-one-radio-button-to-be-checked
 //https://www.infoworld.com/article/2077176/using-javascript-and-forms.html
 //https://www.w3schools.com/jsref/prop_radio_checked.asp
+//https://stackoverflow.com/questions/3397113/how-to-remove-focus-border-outline-around-text-input-boxes-chrome
+
+//SOUND
+const button = document.querySelector("#button");
+const audio = document.querySelector("audio");
+
+function openPopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "block";
+}
+function closePopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "none";
+}
+window.onload = openPopup;
+
+button.addEventListener("click", () => {
+    audio.volume = 0.2;
+    audio.loop = true;
+    audio.play();
+});
+
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }    
+}
+
+var pencilSound = new sound ("assets/sound/pencil.wav");
+var generateSound = new sound ("assets/sound/comp.wav");
+var beepSound = new sound ("assets/sound/beep.wav");
+var mailSound = new sound ("assets/sound/mail.mp3");
 
 
 // DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET
@@ -11,14 +52,17 @@
 let isDragging = false;
 
 dragElement(document.getElementById("movable"));
+document.getElementById("movable").style.top = "50px";
+document.getElementById("movable").style.left = "135px";
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   elmnt.onmousedown = dragMouseDown;
 
   function dragMouseDown(e) {
+    generateSound.play();
     e = e || window.event;
     e.preventDefault();
-    pos3 = e.clientX; // get the mouse cursor position at startup:
+    pos3 = e.clientX;
     pos4 = e.clientY;
     document.onmouseup = closeDragElement;
     document.onmousemove = elementDrag;
@@ -27,6 +71,7 @@ function dragElement(elmnt) {
     if (isDragging) {
       // const randomInterval = Math.floor(Math.random() * (4000 - 2000 + 1)) + 2000;
       // setInterval(displayRandomImage, randomInterval);
+      document.body.style.backgroundImage = "url('assets/looking.gif')";
       setInterval(displayRandomImage, 500);
     }
 
@@ -35,7 +80,7 @@ function dragElement(elmnt) {
   function elementDrag(e) {
     e = e || window.event;
     e.preventDefault();
-    pos1 = pos3 - e.clientX; // calc new cursor position:
+    pos1 = pos3 - e.clientX;
     pos2 = pos4 - e.clientY;
     pos3 = e.clientX;
     pos4 = e.clientY;
@@ -45,10 +90,10 @@ function dragElement(elmnt) {
     // boundaries of headspace
     var parent = document.getElementById("head-space");
     var parentRect = parent.getBoundingClientRect();
-    var minX = parentRect.left-15;
-    var maxX = parentRect.right - elmnt.offsetWidth;
-    var minY = parentRect.top-14;
-    var maxY = parentRect.bottom - elmnt.offsetHeight;
+    var minX = 0;
+    var maxX = parentRect.right - elmnt.offsetWidth - 21;
+    var minY = 0;
+    var maxY = parentRect.bottom - elmnt.offsetHeight - 20;
     
     // calc new position inside head-space
     var newX = elmnt.offsetLeft - pos1;
@@ -60,6 +105,8 @@ function dragElement(elmnt) {
   }
 
   function closeDragElement() {
+    document.body.style.backgroundImage = "url('assets/background_idle.gif')";
+    generateSound.stop();
     document.onmouseup = null;
     document.onmousemove = null;
     isDragging = false;
@@ -75,9 +122,20 @@ let messageDisplaying = false;
 var objectsCount = 0;
 var objects = [];
 const imageUrls = [
-  'assets/1.png',
-  'assets/2.png',
-  'assets/3.png',
+  'assets/objects/gem.png',
+  'assets/objects/mite.png',
+  'assets/objects/coffee.png',
+  'assets/objects/tooth.png',
+  'assets/objects/cd.png',
+  'assets/objects/plant.png',
+  'assets/objects/bottle.png',
+  'assets/objects/bear.png',
+  'assets/objects/shell.png',
+  'assets/objects/human.png',
+  'assets/objects/spoon.png',
+  'assets/objects/cicada.png',
+  'assets/objects/rock.png',
+  'assets/objects/plate.png'
 ];
 
 function displayRandomImage() {
@@ -99,6 +157,8 @@ function displayRandomImage() {
     img.style.left = imgx;
     img.style.top = imgy;
 
+    img.style.width = Math.floor(Math.random() * 100) + 50 + 'px';
+
     const objectIndex = objects.length;
     objects.push(img);
     console.log("array: " + objects.length);
@@ -106,19 +166,21 @@ function displayRandomImage() {
     // message popup on object click
     img.addEventListener('click', async function(event) {
       console.log("Image clicked! : " + objectIndex);
+      beepSound.play();
 
       //if(messageDisplaying == false){
 
           // create message div
           var messageDiv = document.createElement('div');
-          const imgRect = this.getBoundingClientRect(); // position of the clicked image
+          const imgRect = this.getBoundingClientRect();
           messageDiv.style.top =  imgRect.top + 'px';
-          messageDiv.style.left = imgRect.left + 60 + 'px';
+          messageDiv.style.left = imgRect.left + 70 + 'px';
           messageDiv.style.zIndex = "5";
           messageDiv.style.position = 'absolute';
           messageDiv.style.width = '150px';
           messageDiv.style.height = 'auto';
           messageDiv.style.border = '1px solid';
+          messageDiv.style.padding = '10px';
           messageDiv.style.backgroundColor = "white";
           
           // fetch random line for message
@@ -168,7 +230,7 @@ hand.addEventListener('click', async function(event) {
     questionDiv.style.right = "5px";
     open = true;
   }else if (open == true){
-    questionDiv.style.right = "-450px";
+    questionDiv.style.right = "-470px";
     open = false;
   }
 });
@@ -177,12 +239,14 @@ hand.addEventListener('click', async function(event) {
 //ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS
 //ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS QUESTIONAIRE ASSESS
 
-var questions = ['', '', '', '', '', '', '', '', '','','','','','','','','']; // where selections will be stored  
+var questions = ['', '', '', '', '', '', '', '', '','','','','','','','',''];  
 var nonbinaryScore = 0; // the higher it is, the  more heads
 var form = document.getElementsByClassName("questions");
 
 questionDiv.addEventListener('click', async function(event) {
 //form.onchange = function(){
+
+  pencilSound.play();
 
   const radioButtons1 = document.querySelectorAll('input[name="q1-input"]');
   const radioButtons2 = document.querySelectorAll('input[name="q2-input"]');
@@ -332,11 +396,11 @@ function updateHeads() {
     removeTalking(objects[i]);
   }
 
-  // Calculate the number of heads based on nonbinaryScore
+  // calculate the number of heads based on nonbinaryScore
   var numHeads = 0;
   if (nonbinaryScore >= 15) {
     if(nonbinaryScore === 17){
-      //change images to be all the same
+      // change images to be all the same
     }
     numHeads = objects.length;
     console.log("All objects");
@@ -349,12 +413,21 @@ function updateHeads() {
   } else if (nonbinaryScore >= 12) {
     numHeads = Math.floor(objects.length * 0.8);
     console.log("80% of objects");
+    for (var i = 0; i < 2; i++) {
+      const randomDelay = (Math.random() * 2000) + 1000;
+      setTimeout(objectsTalk, randomDelay);
+      emails++;
+    }
     objectsAreTalking = false;
   } else if (nonbinaryScore >= 9) {
     numHeads = Math.floor(objects.length * 0.6);
+    const randomDelay = (Math.random() * 2000) + 1000;
+    setTimeout(objectsTalk, randomDelay);
+    emails++;
     console.log("60% of objects");
   } else if (nonbinaryScore >= 6) {
     numHeads = Math.floor(objects.length * 0.4);
+    objectsTalk();
     console.log("40% of objects");
   } else if (nonbinaryScore >= 3) {
     numHeads = Math.floor(objects.length * 0.2);
@@ -364,13 +437,11 @@ function updateHeads() {
     console.log("40% of objects");
   }
 
-
-  // Remove all heads from objects
   for (var i = 0; i < objects.length; i++) {
     removeHead(objects[i]);
   }
 
-  // Create and position the calculated number of heads for objects
+  // create and position the calculated num of heads for objects
   for (var i = 0; i < numHeads; i++) {
     console.log("adding head: " + i);
     createAndPositionHead(objects[i]);
@@ -382,16 +453,16 @@ function updateHeads() {
 function createAndPositionHead(object) {
   var head = document.createElement("div");
   head.className = "head";
-  head.style.backgroundImage = "url(assets/test-imgs/head.png)";
+  head.style.backgroundImage = "url(assets/sprout.png)";
   head.style.backgroundSize = "contain";
   head.style.position = 'absolute';
-  head.style.width = '100px';
-  head.style.height = '100px';
-  head.style.border = '1px solid';
+  head.style.width = '60px';
+  head.style.height = '60px';
+  // head.style.border = '1px solid';
   object.parentElement.appendChild(head);
   const imgRect = object.getBoundingClientRect();
-  head.style.top = imgRect.top + 'px';
-  head.style.left = imgRect.left + 'px';
+  head.style.top = imgRect.top - 70 + 'px';
+  head.style.left = imgRect.left + 10 + 'px';
   head.style.zIndex = "10";
 }
 
@@ -409,27 +480,26 @@ var randomIndex = 0;
 
 function objectsTalk(){
   console.log("objects talking");
+  mailSound.play();
 
   randomIndex = Math.floor(Math.random() * objects.length);
   var email = document.createElement("div");
   email.className = "email";
-  email.style.backgroundImage = "url(assets/test-imgs/mail.png)";
-  email.style.backgroundSize = "contain";
+  email.style.backgroundImage = "url(assets/mail.png)";
+  email.style.backgroundSize = "cover";
   email.style.position = 'absolute';
-  email.style.width = '50px';
-  email.style.height = '50px';
-  email.style.border = '1px solid';
+  email.style.width = '40px';
+  email.style.height = '30px';
 
-  // Append the email element to the object at the random index
+  // append  email element to the object at random index
   const selectedObject = objects[randomIndex];
   const existingEmail = selectedObject.parentElement.querySelector('.email');
 
   selectedObject.parentElement.appendChild(email);
 
-  // Position the email element relative to the selected object
   const imgRect = selectedObject.getBoundingClientRect();
-  email.style.top = imgRect.top + 'px';
-  email.style.left = imgRect.left + 'px';
+  email.style.top = imgRect.top - 50 + 'px';
+  email.style.left = imgRect.left + 40 + 'px';
   email.style.zIndex = "15";
 
   email.addEventListener("click", openMail);
@@ -442,7 +512,9 @@ function removeTalking(object) {
   console.log(email);
 }
 
-function openMail() {
+const textDocumentURL2 = 'assets/email-random-text.txt';
+
+async function openMail() {
   console.log("OPEN MAIL");
   removeTalking(this);
   emails--;
@@ -451,7 +523,7 @@ function openMail() {
   var email_popup = document.createElement("div");
   email_popup.className = "email_popup";
   email_popup.style.width = '300px';
-  email_popup.style.height = '300px';
+  email_popup.style.height = '200px';
   email_popup.style.border = '1px solid';
   email_popup.style.position = "fixed";
   email_popup.style.top = "50%";
@@ -459,7 +531,23 @@ function openMail() {
   email_popup.style.transform = "translate(-50%, -50%)";
   email_popup.style.zIndex = "20";
   email_popup.style.backgroundColor = "white";
+  email_popup.style.padding = "30px";
+  email_popup.style.paddingTop = "60px";
+
   document.body.appendChild(email_popup);
+
+  //messgage
+  var emailMessage = document.createElement('p');
+  const emailResponse = await fetch(textDocumentURL2);
+  const emailText = await emailResponse.text();
+  const emailLines = emailText.split('\n');
+  const emailRandomIndices = getRandomIndices(emailLines.length, 3);
+  console.log("LINE: " + emailLines[emailRandomIndices[0]]);
+  emailMessage.textContent = emailLines[emailRandomIndices[0]];
+  emailMessage.style.fontStyle = "italic";
+
+  email_popup.appendChild(emailMessage);
+  //this.parentElement.appendChild(email_popup);
 
   //close
   var close = document.createElement("div");
@@ -468,12 +556,14 @@ function openMail() {
   close.style.height = '30px';
   close.style.border = '1px solid';
   close.style.position = 'absolute';
-  close.style.top = '10px'; // Adjust this value for the top position
-  close.style.right = '10px'; // Adjust this value for the right position
+  close.style.top = '10px';
+  close.style.right = '10px';
+  close.style.backgroundImage = "url('assets/x.png')";
+  close.style.backgroundSize = "cover";
   email_popup.appendChild(close);
   
   close.addEventListener('click', function() {
-    document.body.removeChild(email_popup); // Remove the email popup on click
+    document.body.removeChild(email_popup);
   });
 }
 
@@ -495,8 +585,3 @@ function updateEmails(){
 }
 
 setInterval(updateEmails, 1000);
-
-
-
-
-

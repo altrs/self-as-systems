@@ -4,23 +4,40 @@ Drafting
 To do list
 
 	Assets:
-	- Head (multiple?)
-	- Objects (10)
-	- Background Videos (5)
-	- Randomly generated words
-	- Email notification
-	- Entity (3)
+	X Head (multiple?)
+	X Objects (10)
+	X Background Videos (5)
+	X Randomly generated words
+	X Email notification
+	_ Entity (3)
 
 
 	Functions remaining (10/1):
 	X-calculate ratio-based questionnaire score for user
 	X-use score to dictate how many objects on screen will have heads
 	X-if score is high, have objects send messages
-	-if score is 100%, change all object images to the user's head
-	-add background image function
+	X-if score is 100%, change all object images to the user's head
+	X-add background image function
 	-add sound effects
-	-create and upload assets
+	X-create and upload assets
 	-add personal data interaction and then a "actually though, what is this?"
+
+	Objects : 
+	- plates
+	- coffee cup (spilled)
+	- mites
+	- shells
+	- stuffed animal
+	- cicada
+	- rock/gem
+	- scissors
+	- empty glass bottle
+	- tooth
+	- cd
+	- spoon
+	- person figure
+	- crumpled pants
+	- marbles
 
 
 Scoring system: Of the currently answered questions, the percentage of 'not-alone'-leaning answers will dictate the ratio of objects with heads. Score of 0-15 (one point for each question)

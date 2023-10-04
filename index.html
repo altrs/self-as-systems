@@ -9,13 +9,20 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
   </head>
   <body>
+    <audio src="assets/sound/static.m4a"></audio>
+
+    <div class="popup-container" id="popup">
+        <h3>WELCOME</h3>
+        <p>Move head. Answer questions. <br>(Sound On)</p><br>
+        <button id="button" onclick="closePopup()">Thanks</button>
+    </div>
 
     <!-- <p><a href="info.html">INFO</a></p> -->
 
       <!-- HEAD HEAD HEAD HEAD HEAD HEAD HEAD HEAD HEAD HEAD HEAD HEAD HEAD HEAD HEAD HEAD -->
         <div id="head-space">
           <div id="movable">
-            <img src="assets/test-imgs/head.png"/>
+            <img src="assets/head.png"/>
           </div>
         </div>
 
@@ -23,9 +30,36 @@
 
       <!-- QUESTIONS QUESTIONS QUESTIONS QUESTIONS QUESTIONS QUESTIONS QUESTIONS QUESTIONS -->
       <div class="question-container">
-        <div id="q-tab"><img src="assets/hand1.png"/></div>
+        <div id="q-tab"><img src="assets/question.png"/></div>
         
         <div class="questions">
+
+          <div class="corners">
+            <img id="c1" src="assets/corner.png"/>
+            <img id="c2" src="assets/corner2.png"/>
+          </div>
+
+          <img id="lines" src="assets/lines.png"/>
+
+          <form style="margin-left: 30px;">
+            <label for="fname">Name</label>
+            <input type="text" id="fname" name="fname" value=""><br>
+          </form>
+          <br><br>
+
+
+          <div style="width: 100%; text-align: center;">
+            <p style="font-size: 20px; letter-spacing: 2px;">
+             PRACTICE QUIZ #2<br><br>
+            </p>
+          </div>
+          <div style="width: 100%;">
+            <!-- <p style="text-align: left;">MARKING INSTRUCTIONS: ANSWER EACH QUESTION TO THE BEST OF YOUR ABILITY. <br>ONLY ONE MARK PER QUESTION. CIRCLE <br>ANSWER CLEARLY. </p>
+             -->
+             <p style="text-align: left;"> Instructions: Answer each question to the best of your ability. Only one mark per question. Circle answer clearly.</p>
+
+          </div>
+          <br><br>
 
           <!-- Question 1 -->
           <p>Q1: Consider the following situation: You are in a room with no other people; however, a spider resides in the corner. Do you consider yourself to be alone or not alone?</p>
@@ -291,7 +325,7 @@
               <input type="radio" id="q17-input-4" name="q17-input" value="nonbinary"/>
               <span>c)</span> It's all the same
           </label>
-          </form> <br><br>
+          </form>
 
 
         </div>
