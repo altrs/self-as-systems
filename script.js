@@ -229,6 +229,7 @@ hand.addEventListener('click', async function(event) {
 var questions = ['', '', '', '', '', '', '', '', '','','','','','','','',''];  
 var nonbinaryScore = 0; // the higher it is, the  more heads
 var form = document.getElementsByClassName("questions");
+var quizDone = false;
 
 questionDiv.addEventListener('click', async function(event) {
 //form.onchange = function(){
@@ -360,7 +361,11 @@ questionDiv.addEventListener('click', async function(event) {
 
   if(result){ //if quiz is complete
     console.log("QUIZ COMPLETE");
-    showResults();
+    if(quizDone == false){
+      showResults();
+      quizDone = true;
+    }
+    
   }else{
     console.log("QUIZ UNFINISHED");
   }
