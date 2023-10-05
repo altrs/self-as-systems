@@ -157,7 +157,7 @@ label.coolbox input:checked + span {
     padding: 40px;
     border: 2px solid;
     z-index: 1000;
-    width: 300px;
+    width: 500px;
     background-color: rgba(255 255 255 / 0.5);
     text-align: center;
     font-family: 'Pixelify Sans', cursive;
@@ -175,6 +175,7 @@ label.coolbox input:checked + span {
 	bottom: 20px;
 	left: 20px;
 	border: 1.5px solid black;
+	background-color: rgba(255 0 255 / 0.2);
 	border-radius: 50px;
 	padding: 10px;
 	padding-left: 14px;
@@ -194,5 +195,9 @@ label.coolbox input:checked + span {
 	width: 500px;
 	height: 50px;
 	border: 1.5px solid;
+}
+
+button{
+	font-family: 'Pixelify Sans', cursive;
 }
 

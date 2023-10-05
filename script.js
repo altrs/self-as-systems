@@ -33,28 +33,6 @@ button.addEventListener("click", () => {
     binAudio.play();
 });
 
-// function sound(src) {
-//     this.sound = document.createElement("audio");
-//     this.sound.src = src;
-//     this.sound.setAttribute("preload", "auto");
-//     this.sound.setAttribute("controls", "none");
-//     this.sound.style.display = "none";
-//     document.body.appendChild(this.sound);
-//     this.play = function(){
-//         this.sound.play();
-//     }
-//     this.stop = function(){
-//         this.sound.pause();
-//     }    
-// }
-
-// var pencilSound = new sound ("assets/sound/pencil.wav");
-// var generateSound = new sound ("assets/sound/comp.wav");
-// var beepSound = new sound ("assets/sound/beep.wav");
-// var mailSound = new sound ("assets/sound/mail.mp3");
-// var robot = new sound ("assets/sound/robot.wav");
-
-
 // DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET
 // DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET DRAG ELLEMENT DRAG ELEMNET
 
@@ -378,6 +356,14 @@ questionDiv.addEventListener('click', async function(event) {
         }
     }
 
+  var result = hasNoNullOrEmptySpaces(questions);
+
+  if(result){ //if quiz is complete
+    console.log("QUIZ COMPLETE");
+    showResults();
+  }else{
+    console.log("QUIZ UNFINISHED");
+  }
 
   console.log('Questions:', questions);
   updateQuestionScore();
@@ -600,3 +586,54 @@ function updateEmails(){
 }
 
 setInterval(updateEmails, 1000);
+
+
+async function showResults(){
+  var finPopup = document.createElement("div");
+
+    finPopup.className = "finPopup";
+    finPopup.style.width = '300px';
+    finPopup.style.height = '200px';
+    finPopup.style.border = '1px solid';
+    finPopup.style.position = "fixed";
+    finPopup.style.top = "50%";
+    finPopup.style.left = "50%";
+    finPopup.style.transform = "translate(-50%, -50%)";
+    finPopup.style.zIndex = "20";
+    finPopup.style.backgroundColor = "white";
+    finPopup.style.padding = "30px";
+    finPopup.style.paddingTop = "60px";
+    finPopup.style.textAlign = "center";
+
+    document.body.appendChild(finPopup);
+
+    //messgage
+    var quizResults = document.createElement('p');
+    var scoreSummary1 = -(nonbinaryScore-17) / 17 * 100; //2ND SYSTEM OF THOUGHT LEANING
+    var scoreSummary2 = nonbinaryScore / 17 * 100; //2ND SYSTEM OF THOUGHT LEANING
+    quizResults.innerHTML = "QUIZ RESULTS:<br><br>" + scoreSummary1 + "% BINARY LEANING<br>" + scoreSummary2 + "% NUANCE LEANING.<br><br>Feel free to change your answers at any time; see how your answers change the object's behaviors.";
+
+    finPopup.appendChild(quizResults);
+
+    //close
+    var closeR = document.createElement("div");
+    closeR.className = "close";
+    closeR.style.width = '30px';
+    closeR.style.height = '30px';
+    closeR.style.border = '1px solid';
+    closeR.style.position = 'absolute';
+    closeR.style.top = '10px';
+    closeR.style.right = '10px';
+    closeR.style.backgroundImage = "url('assets/x.png')";
+    closeR.style.backgroundSize = "cover";
+    finPopup.appendChild(closeR);
+    
+    closeR.addEventListener('click', function() {
+      document.body.removeChild(finPopup);
+    });
+}
+
+
+function hasNoNullOrEmptySpaces(arr) {
+  return arr.every(element => element !== null && element !== "");
+}
