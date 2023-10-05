@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Pixelify+Sans&display=swap');
 
 body {
 	overflow: hidden;
@@ -159,6 +160,7 @@ label.coolbox input:checked + span {
     width: 300px;
     background-color: rgba(255 255 255 / 0.5);
     text-align: center;
+    font-family: 'Pixelify Sans', cursive;
 }
 
 .close-button {
