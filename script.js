@@ -384,6 +384,7 @@ function updateQuestionScore() {
 
 var emails = 0;
 var objectsAreTalking = false;
+var binaryOn = true;
 const binary = document.getElementById("binary");
 
 function updateHeads() {
@@ -421,11 +422,16 @@ function updateHeads() {
   } else if (nonbinaryScore >= 6) {
     numHeads = Math.floor(objects.length * 0.4);
     objectsTalk();
+    binAudio.pause();
+    binaryOn = false;
+    startOrStopInterval();
     binary.style.display = 'none';
     console.log("40% of objects");
   } else if (nonbinaryScore >= 3) {
     numHeads = Math.floor(objects.length * 0.2);
     binary.style.display = 'flex';
+    binaryOn = true; 
+    startOrStopInterval();
     console.log("40% of objects");
   } else if (nonbinaryScore >= 0) {
     numHeads = 0;
@@ -478,8 +484,21 @@ function changeStateWithDelay() {
     binAudio.play();
 }
 
-setInterval(changeStateWithDelay, 1000);
+let intervalID; // Declare the intervalID variable outside of the if block
 
+function startOrStopInterval() {
+  if (binaryOn === true && !intervalID) {
+    // Start the interval if it's not already running
+    intervalID = setInterval(changeStateWithDelay, 1000);
+  } else if (binaryOn === false && intervalID) {
+    // Stop the interval if it's running
+    clearInterval(intervalID);
+    intervalID = undefined; // Reset intervalID
+  }
+}
+
+// Initial call to start or stop the interval based on binaryOn value
+startOrStopInterval();
 
 //OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS
 //OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS
