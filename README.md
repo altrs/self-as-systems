@@ -3,9 +3,9 @@
 I AM ALONE<br>
 Self-as-Systems Data Portrait <br><br>
 
-This webpage is meant to be an exploration of systems of thought. Based on the user's answers on the questionaire, the webpage 'environment' will ultimately reflect the user's outlook of what it means to 'be alone'
+This webpage is meant to be an exploration of systems of thought. Based on the user's answers on the questionaire, the webpage 'environment' will ultimately reflect the user's outlook of what it means to 'be alone' <br><br>
 
-Functionality List:<br><br>
+Functionality List:<br>
 
 -Move head around to generate objects onto the 'canvas.'<br>
 -Click the objects to get (semi)randomly generated text. <br>
