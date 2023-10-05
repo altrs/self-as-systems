@@ -188,14 +188,66 @@ label.coolbox input:checked + span {
 	rotate: 30deg;
 }
 
+/*BINARY DIV*/
+
 #binary{
 	position: absolute;
+	display: flex;
 	bottom: 20px;
 	left: 150px;
 	width: 500px;
 	height: 50px;
 	border: 1.5px solid;
 }
+
+#binary.state1 .inner-div {
+  width: 30px; /* Adjust as needed */
+  height: 100%;
+  margin-right: 10px; /* Adjust spacing */
+  background-color: red;
+  border: 1px solid yellow;
+}
+
+#binary.state2 .inner-div {
+  width: 30px; /* Adjust as needed */
+  height: 100%;
+  margin-right: 10px; /* Adjust spacing */
+  background-color: red;
+  border: 1px solid yellow;
+}
+
+#binary.state3 .inner-div {
+  width: 30px; /* Adjust as needed */
+  height: 100%;
+  margin-right: 10px; /* Adjust spacing */
+  background-color: red;
+  border: 1px solid yellow;
+}
+
+#binary.state4 .inner-div {
+  width: 30px; /* Adjust as needed */
+  height: 100%;
+  margin-right: 10px; /* Adjust spacing */
+  background-color: red;
+  border: 1px solid yellow;
+}
+
+#binary.state5 .inner-div {
+  width: 30px; /* Adjust as needed */
+  height: 100%;
+  margin-right: 10px; /* Adjust spacing */
+  background-color: red;
+  border: 1px solid yellow;
+}
+
+#binary.state6 .inner-div {
+  width: 30px; /* Adjust as needed */
+  height: 100%;
+  margin-right: 10px; /* Adjust spacing */
+  background-color: red;
+  border: 1px solid yellow;
+}
+
 
 button{
 	font-family: 'Pixelify Sans', cursive;

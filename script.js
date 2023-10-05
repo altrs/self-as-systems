@@ -395,9 +395,6 @@ function updateHeads() {
   // calculate the number of heads based on nonbinaryScore
   var numHeads = 0;
   if (nonbinaryScore >= 15) {
-    if(nonbinaryScore === 17){
-      // change images to be all the same
-    }
     numHeads = objects.length;
     console.log("All objects");
     for (var i = 0; i < 5; i++) {
@@ -428,7 +425,7 @@ function updateHeads() {
     console.log("40% of objects");
   } else if (nonbinaryScore >= 3) {
     numHeads = Math.floor(objects.length * 0.2);
-    binary.style.display = 'block';
+    binary.style.display = 'flex';
     console.log("40% of objects");
   } else if (nonbinaryScore >= 0) {
     numHeads = 0;
@@ -469,6 +466,19 @@ function removeHead(object) {
   if (head) {object.parentElement.removeChild(head);}
   console.log(head);
 }
+
+var stateNum = 1;
+function changeStateWithDelay() {
+    if(stateNum == 6){stateNum = 1;}
+    else{stateNum++;}
+    var currentState = 'state' + stateNum;
+    console.log("STATE CURRENT: " + currentState);
+    changeState(currentState);
+    binAudio.volume = 0.2;
+    binAudio.play();
+}
+
+setInterval(changeStateWithDelay, 1000);
 
 
 //OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS TALK OBJECTS
@@ -637,3 +647,60 @@ async function showResults(){
 function hasNoNullOrEmptySpaces(arr) {
   return arr.every(element => element !== null && element !== "");
 }
+
+
+// BINARY DIV BINARY DIV BINARY DIV BINARY DIV BINARY DIV BINARY DIV
+// BINARY DIV BINARY DIV BINARY DIV BINARY DIV BINARY DIV BINARY DIV
+
+function createInnerDivs(state) {
+  const binaryDiv = document.getElementById('binary');
+
+  // clear any existing inner divs
+  binaryDiv.innerHTML = '';
+
+  let numInnerDivs;
+  switch (state) {
+    case 'state1':
+      numInnerDivs = 3;
+      break;
+    case 'state2':
+      numInnerDivs = 3;
+      break;
+    case 'state3':
+      numInnerDivs = 4;
+      break;
+    case 'state4':
+      numInnerDivs = 2;
+      break;
+    case 'state5':
+      numInnerDivs = 3;
+      break;
+    case 'state6':
+      numInnerDivs = 3;
+      break;
+    default:
+      numInnerDivs = 3;
+  }
+
+  // create and append the inner divs
+  for (let i = 0; i < numInnerDivs; i++) {
+    const innerDiv = document.createElement('div');
+    innerDiv.className = 'inner-div';
+    binaryDiv.appendChild(innerDiv);
+  }
+}
+
+function changeState(newState) {
+  console.log("CHANGE STATE");
+  const binaryDiv = document.getElementById('binary');
+  binaryDiv.classList.remove('state1', 'state2', 'state3', 'state4', 'state5', 'state6');
+  binaryDiv.classList.add(newState);
+  createInnerDivs(newState);
+}
+
+changeState('state1');
+
+
+
+
+
