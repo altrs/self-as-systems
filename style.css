@@ -198,56 +198,140 @@ label.coolbox input:checked + span {
 	width: 500px;
 	height: 50px;
 	border: 1.5px solid;
+	justify-content: space-between;
 }
 
 #binary.state1 .inner-div {
-  width: 30px; /* Adjust as needed */
+  width: 30px;
   height: 100%;
-  margin-right: 10px; /* Adjust spacing */
-  background-color: red;
-  border: 1px solid yellow;
+  background-color: black;
+  margin-left: 100px;
+}
+
+#binary.state1 .inner-div:first-child {
+  background-color: black;
+  height: 20px;
+}
+
+#binary.state1 > :nth-child(2) {
+  background-color: black;
+  width: 60px;
+}
+
+#binary.state1 > :nth-child(3) {
+  background-color: black;
+  height: 40px;
 }
 
 #binary.state2 .inner-div {
-  width: 30px; /* Adjust as needed */
-  height: 100%;
-  margin-right: 10px; /* Adjust spacing */
-  background-color: red;
+  height: 95%;
+  background-color: black;
   border: 1px solid yellow;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#binary.state2 .inner-div:first-child {
+  background-color: black;
+  height: 20px;
+  margin-left: 20px;
+  width: 60px;
+}
+
+#binary.state2 > :nth-child(2) {
+  background-color: black;
+  width: 100px;
+}
+
+#binary.state2 > :nth-child(3) {
+  background-color: black;
+  width: 60px;
 }
 
 #binary.state3 .inner-div {
   width: 30px; /* Adjust as needed */
-  height: 100%;
-  margin-right: 10px; /* Adjust spacing */
-  background-color: red;
+  height: 90%;
+  background-color: black;
   border: 1px solid yellow;
+  height: 40px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+#binary.state3 .inner-div:first-child {
+  background-color: black;
+  height: 20px;
+}
+
+#binary.state3 > :nth-child(2) {
+  background-color: black;
+}
+
+#binary.state3 > :nth-child(3) {
+  background-color: black;
 }
 
 #binary.state4 .inner-div {
   width: 30px; /* Adjust as needed */
-  height: 100%;
-  margin-right: 10px; /* Adjust spacing */
-  background-color: red;
-  border: 1px solid yellow;
+  height: 90%;
+  background-color: black;
+}
+#binary.state4 .inner-div:first-child {
+  background-color: black;
+  height: 20px;
+  margin-left: 140px;
+}
+
+#binary.state4 > :nth-child(2) {
+  background-color: black;
+  margin-right: 180px;
+  width: 80px;
 }
 
 #binary.state5 .inner-div {
   width: 30px; /* Adjust as needed */
-  height: 100%;
-  margin-right: 10px; /* Adjust spacing */
-  background-color: red;
+  height: 90%;
+  background-color: black;
   border: 1px solid yellow;
+  margin-left: 100px;
+}
+#binary.state5 .inner-div:first-child {
+  background-color: black;
+  width: 50px;
+}
+
+#binary.state5 > :nth-child(2) {
+  background-color: black;
+  width: 80px;
+}
+
+#binary.state5 > :nth-child(3) {
+  background-color: black;
+  width: 40px;
+  margin-right: 100px;
 }
 
 #binary.state6 .inner-div {
   width: 30px; /* Adjust as needed */
   height: 100%;
-  margin-right: 10px; /* Adjust spacing */
-  background-color: red;
+  background-color: black;
   border: 1px solid yellow;
+  margin-right: 100px;
+}
+#binary.state6 .inner-div:first-child {
+  background-color: black;
+  width: 20px;
 }
 
+#binary.state6 > :nth-child(2) {
+  background-color: black;
+  width: 20px;
+}
+
+#binary.state6 > :nth-child(3) {
+  background-color: black;
+  width: 20px;
+  margin-right: 100px;
+}
 
 button{
 	font-family: 'Pixelify Sans', cursive;

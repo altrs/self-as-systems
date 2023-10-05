@@ -670,10 +670,9 @@ function hasNoNullOrEmptySpaces(arr) {
 
 // BINARY DIV BINARY DIV BINARY DIV BINARY DIV BINARY DIV BINARY DIV
 // BINARY DIV BINARY DIV BINARY DIV BINARY DIV BINARY DIV BINARY DIV
+const binaryDiv = document.getElementById('binary');
 
 function createInnerDivs(state) {
-  const binaryDiv = document.getElementById('binary');
-
   // clear any existing inner divs
   binaryDiv.innerHTML = '';
 
@@ -718,8 +717,4 @@ function changeState(newState) {
 }
 
 changeState('state1');
-
-
-
-
 
